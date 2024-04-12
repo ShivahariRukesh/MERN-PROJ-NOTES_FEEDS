@@ -3,6 +3,7 @@ const app = express();
 const cors = require("cors");
 const routes = require("./routes/index");
 // app.use({extended:cors});
+app.use(express.json());
 app.use("/", routes);
 
 app.all("*", (req, res) => {
