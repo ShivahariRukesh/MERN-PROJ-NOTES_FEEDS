@@ -7,7 +7,7 @@ const path = require("path");
 
 const logEvents = async (msg, logFileName) => {
   const dateTime = `${format(new Date(), "yyyyMMdd\tHH:mm:ss")}`;
-  const logItme = `${dateTime}\t${uuid()}\t${msg}\n`;
+  const logItem = `${dateTime}\t${uuid()}\t${msg}\n`;
 
   try {
     if (!fs.existsSync(path.join(__dirname, "..", "logs"))) {
@@ -27,3 +27,7 @@ const logger = (req, res, next) => {
   console.log(`${req.method} ${req.path}`);
   next;
 };
+
+module.exports = { logger, logEvents };
+//  This middleware can be used in an Express.js application to log incoming requests to a specified log file.
+// It provides a way to track and monitor incoming traffic, which can be useful for debugging and monitoring purposes.
