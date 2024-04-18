@@ -1,12 +1,13 @@
 const express = require("express");
 const app = express();
 const cors = require("cors");
+const corsOptions = require("./config/corsOption");
 const cookieParser = require("cookie-parser");
 const { logger } = require("./middleware/logger");
 const errorHandler = require("./middleware/errHandler");
 const routes = require("./routes/index");
 
-app.use(cors());
+app.use(cors(corsOptions));
 
 app.use("This shows the requests", logger);
 app.use(express.json());
