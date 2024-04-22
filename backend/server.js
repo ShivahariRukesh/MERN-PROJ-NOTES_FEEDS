@@ -18,7 +18,9 @@ app.use("This shows the requests", logger);
 app.use(express.json());
 
 app.use(cookieParser());
+
 connectMongoDB();
+
 app.use("/", routes);
 
 app.all("*", (req, res) => {
