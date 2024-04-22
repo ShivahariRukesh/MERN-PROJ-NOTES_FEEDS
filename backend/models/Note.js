@@ -3,8 +3,7 @@ const AutoIncrement = require("mongoose-sequence")(mongoose);
 const noteSchema = new mongoose.Schema(
   {
     users: {
-      type: mongoose.Schema.Types,
-      ObjectId, //Like a foreign key ID
+      type: mongoose.Schema.Types.ObjectId, //Like a foreign key ID
       ref: "User",
       required: true,
     },
