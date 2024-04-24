@@ -44,6 +44,8 @@ const updateUser = async (req, res) => {
     return res.status(400).json({ msg: "Username not found" });
   }
 
+  // I guess here the {username} is the edited name and checks if edited or new username has same value as stored in the database
+  // so if it is same username and if that username has different id (different id cause if i want same username but edited roles then it is of same record i am performing edit on same record username is same but other diff attributes so as the id is same it doesnt show duplicacy) then duplicate record which has same username
   const duplicate = await userSchema.findOne({ username }).lean();
   if (duplicate && duplicate?._id.toString() !== id) {
     return res.status(409).json({ msg: "Duplicate Username" });
@@ -67,23 +69,24 @@ const updateUser = async (req, res) => {
 };
 
 const deleteUser = async (req, res) => {
-  const { id } = req.body;
+  const { id, username } = req.body;
 
-  const notes = await noteSchema.findOne({ user: id }).lean;
+  // const notes = await noteSchema.findOne({ user: id }).lean;
 
-  if (notes?.length) {
-    res.status(400).json({ msg: "Cannot delete the user having notes" });
-  }
+  // if (notes) {
+  //   res.status(400).json({ msg: "Cannot delete the user having notes" });
+  // }
 
   const user = await userSchema.findById(id);
   if (!user) {
     return res.status(400).json("User not found");
   }
+  const store = user;
   const delRes = await user.deleteOne();
-
+  console.log(store);
   return res
     .status(200)
-    .json({ msg: `Username:${delRes.username} has been deleted` });
+    .json({ msg: `Username:${store.username} has been deleted` });
 };
 
 module.exports = { getAllUsers, createUser, updateUser, deleteUser };
