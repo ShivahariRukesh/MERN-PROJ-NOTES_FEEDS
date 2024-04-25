@@ -2,3 +2,6 @@
 20240418	23:31:06	d7fe1b34-e3d0-4452-9cc9-0f54e3859730	Error: Not allowed by Cors	 GET	/	https://www.google.com
 20240422	14:22:44	4d11e8cd-668a-4562-890a-3f3381f37cb1	SyntaxError: Unexpected token } in JSON at position 70	 POST	/createUser	undefined
 20240422	14:22:51	f0f22427-6cb8-457e-bcab-581316448f1c	SyntaxError: Unexpected token } in JSON at position 70	 POST	/createUser	undefined
+20240424	13:39:20	b90e6862-92d3-4408-925d-33e5590f75c3	SyntaxError: Unexpected token i in JSON at position 2	 DELETE	/deleteUser	undefined
+20240424	13:39:25	4b03fa87-cf27-440d-9c0c-0b0dea6f435c	SyntaxError: Unexpected token i in JSON at position 2	 DELETE	/deleteUser	undefined
+20240425	14:47:23	3835adfa-6eff-41d2-b8d3-630e659bdb00	SyntaxError: Unexpected string in JSON at position 38	 GET	/createNote	undefined

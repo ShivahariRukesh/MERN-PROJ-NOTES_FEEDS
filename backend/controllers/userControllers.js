@@ -55,7 +55,7 @@ const updateUser = async (req, res) => {
   user.roles = roles;
   user.active = active;
 
-  if (password) user.password = await bcrypt(password, 10);
+  // if (password) user.password = await bcrypt(password, 10);
 
   // In Mongoose, when you retrieve a document from the database using a model's static method like User.findById(id),
   //the returned document is an instance of the model class. This means that the document inherits all the methods and properties defined on the model.
@@ -69,21 +69,22 @@ const updateUser = async (req, res) => {
 };
 
 const deleteUser = async (req, res) => {
-  const { id, username } = req.body;
+  const { id } = req.body;
 
-  // const notes = await noteSchema.findOne({ user: id }).lean;
-
-  // if (notes) {
-  //   res.status(400).json({ msg: "Cannot delete the user having notes" });
-  // }
-
-  const user = await userSchema.findById(id);
+  const user = await userSchema.findById(id); //Here lean() is not used cause this user is furthur used below to delete the record where the data must be in mongoDB format
   if (!user) {
     return res.status(400).json("User not found");
   }
+
+  const notes = await noteSchema.findOne({ user: id }).lean();
+
+  if (notes) {
+    return res.status(400).json({ msg: "Cannot delete the user having notes" });
+  }
+
   const store = user;
-  const delRes = await user.deleteOne();
-  console.log(store);
+  await user.deleteOne();
+
   return res
     .status(200)
     .json({ msg: `Username:${store.username} has been deleted` });

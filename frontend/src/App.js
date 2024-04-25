@@ -2,6 +2,7 @@ import React from "react";
 
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 
+import Layout from "./components/Layout";
 import { collectRoute } from "./routes";
 function App() {
   return (
