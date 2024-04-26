@@ -11,7 +11,7 @@ export const collectRoute = [
   {
     element: <Home />,
     name: "Home",
-    path: "/",
+    path: "/home",
   },
   {
     element: <About />,
