@@ -17,7 +17,9 @@ function App() {
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<Public />} />
+
             <Route path="login" element={<Login />} />
+
             <Route path="dash" element={<DashLayout />}>
               <Route index element={<Welcome />} />
               <Route path="users" element={<UserLists />} />
